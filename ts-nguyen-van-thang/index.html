@@ -74,10 +74,11 @@ button:focus-visible,input:focus-visible{outline:3px solid #fff;outline-offset:2
 .mapbtn:hover{transform:scale(1.05)}.mapbtn svg{width:1.3em;height:1.3em}
 .mapbtn:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .foot .lab.ex{font-family:'Lexend',sans-serif;font-weight:700;font-size:calc(10px*var(--f));letter-spacing:.03em;color:#14462a;text-transform:uppercase}
+.bgr{position:fixed;inset:0;overflow:hidden;opacity:.2;z-index:0;pointer-events:none;display:none}.bgr img{position:absolute;left:50%;top:50%;width:150vmax;height:150vmax;margin:-75vmax 0 0 -75vmax;object-fit:cover;animation:spin 40s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.mob .bgr{display:block}.mob .bgv{display:none}
 </style>
 </head>
 <body data-khach="ts-nguyen-van-thang">
-<video class="bgv" autoplay muted loop playsinline disablepictureinpicture aria-hidden="true" src="../assets/bg-7ff8583b67.mp4"></video>
+<script>(function(){var u=navigator.userAgent,m=/Zalo|FBAN|FBAV|FB_IAB|Messenger|Instagram|Line\/|; wv\)|Android|iPhone|iPad|iPod|Mobile/i.test(u)||matchMedia("(pointer:coarse)").matches;if(m)document.documentElement.classList.add("mob")})()</script><div class="bgr" aria-hidden="true"><img src="../assets/drum-bg.jpg" alt=""></div><video class="bgv" muted loop playsinline disablepictureinpicture aria-hidden="true" data-src="../assets/bg-7ff8583b67.mp4"></video>
 
 <div class="gate" id="gate">
   <div class="seal"><svg width="60" viewBox="0 0 24 24" fill="#ffd99a"><path d="M12 2l3 7 7 .6-5.3 4.7 1.6 7.2L12 17.8 5.7 21.500l1.6-7.200L2 9.600 9 9z"/></svg></div>
@@ -165,16 +166,6 @@ var G={"ts-nguyen-hoang-oanh": ["TS. Nguyễn Hoàng Oanh", "Hiệu trưởng Tr
   addEventListener('load',fit);fit();
 })();
 </script>
-<script>
-// Phát video nền trên điện thoại (iOS Low Power Mode, Zalo/Messenger chặn autoplay)
-(function(){
-  var v=document.querySelector('.bgv');if(!v)return;
-  v.muted=true;v.defaultMuted=true;v.playsInline=true;v.setAttribute('muted','');v.setAttribute('playsinline','');v.setAttribute('webkit-playsinline','');
-  function play(){if(v.paused){var p=v.play();if(p&&p.catch)p.catch(function(){})}}
-  play();v.addEventListener('canplay',play);addEventListener('pageshow',play);
-  document.addEventListener('visibilitychange',function(){if(!document.hidden)play()});
-  ['touchstart','touchend','click','scroll'].forEach(function(e){document.addEventListener(e,play,{passive:true,capture:true})});
-})();
-</script>
+<script>(function(){var v=document.querySelector(".bgv");if(!v||document.documentElement.classList.contains("mob"))return;v.src=v.dataset.src;v.muted=true;var p=v.play();p&&p.catch&&p.catch(function(){})})()</script>
 </body>
 </html>
