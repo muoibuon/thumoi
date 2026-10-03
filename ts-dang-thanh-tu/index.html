@@ -165,5 +165,16 @@ var G={"ts-nguyen-hoang-oanh": ["TS. Nguyễn Hoàng Oanh", "Hiệu trưởng Tr
   addEventListener('load',fit);fit();
 })();
 </script>
+<script>
+// Phát video nền trên điện thoại (iOS Low Power Mode, Zalo/Messenger chặn autoplay)
+(function(){
+  var v=document.querySelector('.bgv');if(!v)return;
+  v.muted=true;v.defaultMuted=true;v.playsInline=true;v.setAttribute('muted','');v.setAttribute('playsinline','');v.setAttribute('webkit-playsinline','');
+  function play(){if(v.paused){var p=v.play();if(p&&p.catch)p.catch(function(){})}}
+  play();v.addEventListener('canplay',play);addEventListener('pageshow',play);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)play()});
+  ['touchstart','touchend','click','scroll'].forEach(function(e){document.addEventListener(e,play,{passive:true,capture:true})});
+})();
+</script>
 </body>
 </html>
